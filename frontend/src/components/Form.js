@@ -41,6 +41,15 @@ const Button = styled.button`
 
 const Form = ({ getUsers, onEdit, setOnEdit }) => {
   const ref = useRef();
+  const verificarValorMinimo = (e) => {
+    let { value } = e.target;
+    var valorMaximo = 10;
+
+    if (value > valorMaximo) {
+      value = "";
+      alert("O valor máximo permitido é " + valorMaximo);
+    }
+  };
 
   useEffect(() => {
     if (onEdit) {
@@ -106,15 +115,15 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
       </InputArea>
       <InputArea>
         <Label>av1</Label>
-        <Input name="av1" />
+        <Input onInput={(e) => verificarValorMinimo(e)} name="av1" />
       </InputArea>
       <InputArea>
         <Label>av2</Label>
-        <Input name="av2" />
+        <Input onInput={(e) => verificarValorMinimo(e)} name="av2" />
       </InputArea>
       <InputArea>
         <Label>av3</Label>
-        <Input name="av3" />
+        <Input onInput={(e) => verificarValorMinimo(e)} name="av3" />
       </InputArea>
 
       <Button type="submit">SALVAR</Button>
